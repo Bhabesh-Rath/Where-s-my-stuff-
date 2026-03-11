@@ -1,0 +1,1 @@
+{"repos": [{"repoId": "timm/mobilenetv4_conv_small.e2400_r224_in1k", "repoType": "model", "commitHash": "331fb803779522b685cf942e15f914fb6741c1eb", "filePaths": ["model.safetensors"]}]}

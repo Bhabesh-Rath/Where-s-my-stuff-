@@ -1,0 +1,592 @@
+MobileNetV4-Small — Dependency Graph
+============================================================
+
+Group 000
+----------------------------------------
+  conv_head (Conv2d(960, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  conv_head (Conv2d(960, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  conv_head (Conv2d(960, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  _ElementWiseOp_2(CudnnBatchNormBackward0)
+  _ElementWiseOp_2(CudnnBatchNormBackward0)  ────────────Dependency──▶  norm_head (BatchNormAct2d(
+  1280, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  norm_head (BatchNormAct2d(
+  1280, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _Reshape_0()
+  _Reshape_0()                              ────────────Dependency──▶  classifier (Linear(in_features=1280, out_features=80, bias=True))
+  classifier (Linear(in_features=1280, out_features=80, bias=True))  ────────────Dependency──▶  _ElementWiseOp_1(TBackward0)
+
+Group 001
+----------------------------------------
+  blocks.4.0.conv (Conv2d(128, 960, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  blocks.4.0.conv (Conv2d(128, 960, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.4.0.conv (Conv2d(128, 960, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  _ElementWiseOp_4(CudnnBatchNormBackward0)
+  _ElementWiseOp_4(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.4.0.bn1 (BatchNormAct2d(
+  960, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.4.0.bn1 (BatchNormAct2d(
+  960, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_3(MeanBackward1)
+  _ElementWiseOp_3(MeanBackward1)           ────────────Dependency──▶  conv_head (Conv2d(960, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 002
+----------------------------------------
+  blocks.3.0.pw_proj.conv (Conv2d(576, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  blocks.3.0.pw_proj.conv (Conv2d(576, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.0.pw_proj.conv (Conv2d(576, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  blocks.3.0.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  blocks.3.0.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  _ElementWiseOp_9(AddBackward0)
+  blocks.3.0.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.1.dw_start.conv (Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=128, bias=False))
+  blocks.3.1.dw_start.conv (Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=128, bias=False))  ────────────Dependency──▶  blocks.3.1.dw_start.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  blocks.3.1.dw_start.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.1.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_9(AddBackward0)            ────────────Dependency──▶  blocks.3.1.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_9(AddBackward0)            ────────────Dependency──▶  _ElementWiseOp_8(AddBackward0)
+  _ElementWiseOp_9(AddBackward0)            ────────────Dependency──▶  blocks.3.2.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_8(AddBackward0)            ────────────Dependency──▶  blocks.3.2.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_8(AddBackward0)            ────────────Dependency──▶  _ElementWiseOp_7(AddBackward0)
+  _ElementWiseOp_8(AddBackward0)            ────────────Dependency──▶  blocks.3.3.pw_exp.conv (Conv2d(128, 384, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_7(AddBackward0)            ────────────Dependency──▶  blocks.3.3.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_7(AddBackward0)            ────────────Dependency──▶  _ElementWiseOp_6(AddBackward0)
+  _ElementWiseOp_7(AddBackward0)            ────────────Dependency──▶  blocks.3.4.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_6(AddBackward0)            ────────────Dependency──▶  blocks.3.4.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_6(AddBackward0)            ────────────Dependency──▶  _ElementWiseOp_5(AddBackward0)
+  _ElementWiseOp_6(AddBackward0)            ────────────Dependency──▶  blocks.3.5.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_5(AddBackward0)            ────────────Dependency──▶  blocks.3.5.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_5(AddBackward0)            ────────────Dependency──▶  blocks.4.0.conv (Conv2d(128, 960, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.5.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.5.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.4.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.4.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.3.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.3.pw_proj.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.2.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.2.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.1.pw_proj.bn (BatchNormAct2d(
+  128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.1.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 003
+----------------------------------------
+  blocks.3.0.dw_mid.conv (Conv2d(576, 576, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=576, bias=False))  ────────────Dependency──▶  blocks.3.0.dw_mid.conv (Conv2d(576, 576, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=576, bias=False))
+  blocks.3.0.dw_mid.conv (Conv2d(576, 576, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=576, bias=False))  ────────────Dependency──▶  blocks.3.0.pw_exp.bn (BatchNormAct2d(
+  576, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.0.dw_mid.conv (Conv2d(576, 576, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=576, bias=False))  ────────────Dependency──▶  _ElementWiseOp_10(CudnnBatchNormBackward0)
+  _ElementWiseOp_10(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.0.dw_mid.bn (BatchNormAct2d(
+  576, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.0.dw_mid.bn (BatchNormAct2d(
+  576, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.3.0.pw_proj.conv (Conv2d(576, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.0.pw_exp.bn (BatchNormAct2d(
+  576, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_11(CudnnBatchNormBackward0)
+  _ElementWiseOp_11(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.0.pw_exp.conv (Conv2d(96, 576, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 004
+----------------------------------------
+  blocks.3.0.dw_start.conv (Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False))  ────────────Dependency──▶  blocks.3.0.dw_start.conv (Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False))
+  blocks.3.0.dw_start.conv (Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False))  ────────────Dependency──▶  _ElementWiseOp_12(AddBackward0)
+  blocks.3.0.dw_start.conv (Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False))  ────────────Dependency──▶  blocks.3.0.dw_start.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  blocks.3.0.dw_start.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.3.0.pw_exp.conv (Conv2d(96, 576, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_12(AddBackward0)           ────────────Dependency──▶  blocks.2.5.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_12(AddBackward0)           ────────────Dependency──▶  _ElementWiseOp_13(AddBackward0)
+  _ElementWiseOp_13(AddBackward0)           ────────────Dependency──▶  blocks.2.4.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_13(AddBackward0)           ────────────Dependency──▶  _ElementWiseOp_14(AddBackward0)
+  _ElementWiseOp_13(AddBackward0)           ────────────Dependency──▶  blocks.2.5.dw_start.conv (Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False))
+  blocks.2.5.dw_start.conv (Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False))  ────────────Dependency──▶  blocks.2.5.dw_start.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  blocks.2.5.dw_start.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.5.pw_exp.conv (Conv2d(96, 384, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_14(AddBackward0)           ────────────Dependency──▶  blocks.2.3.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_14(AddBackward0)           ────────────Dependency──▶  _ElementWiseOp_15(AddBackward0)
+  _ElementWiseOp_14(AddBackward0)           ────────────Dependency──▶  blocks.2.4.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_15(AddBackward0)           ────────────Dependency──▶  blocks.2.2.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_15(AddBackward0)           ────────────Dependency──▶  _ElementWiseOp_16(AddBackward0)
+  _ElementWiseOp_15(AddBackward0)           ────────────Dependency──▶  blocks.2.3.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  _ElementWiseOp_16(AddBackward0)           ────────────Dependency──▶  blocks.2.1.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_16(AddBackward0)           ────────────Dependency──▶  blocks.2.0.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  _ElementWiseOp_16(AddBackward0)           ────────────Dependency──▶  blocks.2.2.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.0.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.0.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.0.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.1.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.1.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.1.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.2.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.2.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.3.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.3.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.4.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.4.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.5.pw_proj.bn (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.5.pw_proj.conv (Conv2d(384, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 005
+----------------------------------------
+  blocks.2.0.dw_mid.conv (Conv2d(192, 192, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.0.dw_mid.conv (Conv2d(192, 192, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=192, bias=False))
+  blocks.2.0.dw_mid.conv (Conv2d(192, 192, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.0.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.0.dw_mid.conv (Conv2d(192, 192, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=192, bias=False))  ────────────Dependency──▶  _ElementWiseOp_17(CudnnBatchNormBackward0)
+  _ElementWiseOp_17(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.0.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.0.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.2.0.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.0.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_18(CudnnBatchNormBackward0)
+  _ElementWiseOp_18(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.0.pw_exp.conv (Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 006
+----------------------------------------
+  blocks.2.0.dw_start.conv (Conv2d(64, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=64, bias=False))  ────────────Dependency──▶  blocks.2.0.dw_start.conv (Conv2d(64, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=64, bias=False))
+  blocks.2.0.dw_start.conv (Conv2d(64, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=64, bias=False))  ────────────Dependency──▶  blocks.1.1.bn1 (BatchNormAct2d(
+  64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.0.dw_start.conv (Conv2d(64, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=64, bias=False))  ────────────Dependency──▶  blocks.2.0.dw_start.bn (BatchNormAct2d(
+  64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))
+  blocks.2.0.dw_start.bn (BatchNormAct2d(
+  64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): Identity()
+))  ────────────Dependency──▶  blocks.2.0.pw_exp.conv (Conv2d(64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.1.1.bn1 (BatchNormAct2d(
+  64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_19(CudnnBatchNormBackward0)
+  _ElementWiseOp_19(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.1.1.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 007
+----------------------------------------
+  blocks.1.0.conv (Conv2d(32, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))  ────────────Dependency──▶  blocks.1.0.conv (Conv2d(32, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))
+  blocks.1.0.conv (Conv2d(32, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))  ────────────Dependency──▶  _ElementWiseOp_20(CudnnBatchNormBackward0)
+  _ElementWiseOp_20(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.1.0.bn1 (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.1.0.bn1 (BatchNormAct2d(
+  96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.1.1.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 008
+----------------------------------------
+  blocks.0.1.conv (Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  blocks.0.1.conv (Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.0.1.conv (Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  _ElementWiseOp_21(CudnnBatchNormBackward0)
+  _ElementWiseOp_21(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.0.1.bn1 (BatchNormAct2d(
+  32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.0.1.bn1 (BatchNormAct2d(
+  32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.1.0.conv (Conv2d(32, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))
+
+Group 009
+----------------------------------------
+  blocks.0.0.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))  ────────────Dependency──▶  blocks.0.0.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))
+  blocks.0.0.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False))  ────────────Dependency──▶  _ElementWiseOp_22(CudnnBatchNormBackward0)
+  _ElementWiseOp_22(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.0.0.bn1 (BatchNormAct2d(
+  32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.0.0.bn1 (BatchNormAct2d(
+  32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.0.1.conv (Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 010
+----------------------------------------
+  blocks.2.1.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.1.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))
+  blocks.2.1.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.1.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.1.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  _ElementWiseOp_24(CudnnBatchNormBackward0)
+  _ElementWiseOp_24(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.1.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.1.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.2.1.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.1.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_25(CudnnBatchNormBackward0)
+  _ElementWiseOp_25(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.1.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 011
+----------------------------------------
+  blocks.2.2.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.2.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))
+  blocks.2.2.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.2.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.2.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  _ElementWiseOp_26(CudnnBatchNormBackward0)
+  _ElementWiseOp_26(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.2.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.2.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.2.2.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.2.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_27(CudnnBatchNormBackward0)
+  _ElementWiseOp_27(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.2.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 012
+----------------------------------------
+  blocks.2.3.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.3.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))
+  blocks.2.3.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.3.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.3.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  _ElementWiseOp_28(CudnnBatchNormBackward0)
+  _ElementWiseOp_28(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.3.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.3.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.2.3.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.3.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_29(CudnnBatchNormBackward0)
+  _ElementWiseOp_29(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.3.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 013
+----------------------------------------
+  blocks.2.4.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.4.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))
+  blocks.2.4.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  blocks.2.4.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.4.dw_mid.conv (Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False))  ────────────Dependency──▶  _ElementWiseOp_30(CudnnBatchNormBackward0)
+  _ElementWiseOp_30(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.4.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.4.dw_mid.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.2.4.pw_proj.conv (Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.4.pw_exp.bn (BatchNormAct2d(
+  192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_31(CudnnBatchNormBackward0)
+  _ElementWiseOp_31(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.4.pw_exp.conv (Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 014
+----------------------------------------
+  blocks.2.5.pw_exp.conv (Conv2d(96, 384, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  blocks.2.5.pw_exp.conv (Conv2d(96, 384, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.2.5.pw_exp.conv (Conv2d(96, 384, kernel_size=(1, 1), stride=(1, 1), bias=False))  ────────────Dependency──▶  _ElementWiseOp_32(CudnnBatchNormBackward0)
+  _ElementWiseOp_32(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.2.5.pw_exp.bn (BatchNormAct2d(
+  384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.2.5.pw_exp.bn (BatchNormAct2d(
+  384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.2.5.pw_proj.conv (Conv2d(384, 96, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 015
+----------------------------------------
+  blocks.3.1.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.1.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))
+  blocks.3.1.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.1.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.1.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))  ────────────Dependency──▶  _ElementWiseOp_33(CudnnBatchNormBackward0)
+  _ElementWiseOp_33(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.1.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.1.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.3.1.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.1.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_34(CudnnBatchNormBackward0)
+  _ElementWiseOp_34(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.1.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 016
+----------------------------------------
+  blocks.3.2.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.2.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))
+  blocks.3.2.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.2.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.2.dw_mid.conv (Conv2d(512, 512, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=512, bias=False))  ────────────Dependency──▶  _ElementWiseOp_35(CudnnBatchNormBackward0)
+  _ElementWiseOp_35(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.2.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.2.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.3.2.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.2.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_36(CudnnBatchNormBackward0)
+  _ElementWiseOp_36(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.2.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 017
+----------------------------------------
+  blocks.3.3.dw_mid.conv (Conv2d(384, 384, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=384, bias=False))  ────────────Dependency──▶  blocks.3.3.dw_mid.conv (Conv2d(384, 384, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=384, bias=False))
+  blocks.3.3.dw_mid.conv (Conv2d(384, 384, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=384, bias=False))  ────────────Dependency──▶  blocks.3.3.pw_exp.bn (BatchNormAct2d(
+  384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.3.dw_mid.conv (Conv2d(384, 384, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=384, bias=False))  ────────────Dependency──▶  _ElementWiseOp_37(CudnnBatchNormBackward0)
+  _ElementWiseOp_37(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.3.dw_mid.bn (BatchNormAct2d(
+  384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.3.dw_mid.bn (BatchNormAct2d(
+  384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.3.3.pw_proj.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.3.pw_exp.bn (BatchNormAct2d(
+  384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_38(CudnnBatchNormBackward0)
+  _ElementWiseOp_38(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.3.pw_exp.conv (Conv2d(128, 384, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 018
+----------------------------------------
+  blocks.3.4.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.4.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))
+  blocks.3.4.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.4.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.4.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))  ────────────Dependency──▶  _ElementWiseOp_39(CudnnBatchNormBackward0)
+  _ElementWiseOp_39(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.4.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.4.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.3.4.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.4.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_40(CudnnBatchNormBackward0)
+  _ElementWiseOp_40(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.4.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))
+
+Group 019
+----------------------------------------
+  blocks.3.5.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.5.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))
+  blocks.3.5.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))  ────────────Dependency──▶  blocks.3.5.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.5.dw_mid.conv (Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False))  ────────────Dependency──▶  _ElementWiseOp_41(CudnnBatchNormBackward0)
+  _ElementWiseOp_41(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.5.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))
+  blocks.3.5.dw_mid.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  blocks.3.5.pw_proj.conv (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False))
+  blocks.3.5.pw_exp.bn (BatchNormAct2d(
+  512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+  (drop): Identity()
+  (act): ReLU(inplace=True)
+))  ────────────Dependency──▶  _ElementWiseOp_42(CudnnBatchNormBackward0)
+  _ElementWiseOp_42(CudnnBatchNormBackward0)  ────────────Dependency──▶  blocks.3.5.pw_exp.conv (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False))

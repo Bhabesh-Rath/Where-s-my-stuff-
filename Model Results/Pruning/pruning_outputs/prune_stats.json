@@ -1,0 +1,39 @@
+{
+  "original_params": 2595504,
+  "pruned_params": 952048,
+  "original_params_M": 2.595504,
+  "pruned_params_M": 0.952048,
+  "param_reduction_pct": 63.31933990469674,
+  "original_macs_M": 186.492416,
+  "pruned_macs_M": 75.107768,
+  "mac_reduction_pct": 59.72610060454147,
+  "original_size_mb": 10.568803,
+  "pruned_size_mb": 3.956131,
+  "step_log": [
+    {
+      "step": 1,
+      "params_M": 2.15572,
+      "macs_M": 149.85572
+    },
+    {
+      "step": 2,
+      "params_M": 1.814808,
+      "macs_M": 131.765112
+    },
+    {
+      "step": 3,
+      "params_M": 1.513696,
+      "macs_M": 116.760408
+    },
+    {
+      "step": 4,
+      "params_M": 1.188376,
+      "macs_M": 87.9736
+    },
+    {
+      "step": 5,
+      "params_M": 0.952048,
+      "macs_M": 75.107768
+    }
+  ]
+}

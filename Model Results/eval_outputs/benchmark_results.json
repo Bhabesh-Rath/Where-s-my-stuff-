@@ -1,0 +1,26 @@
+{
+  "original": {
+    "label": "Original",
+    "params_M": 2.595504,
+    "size_mb": 10.584275,
+    "macs_M": null,
+    "top1_acc": 0.0232,
+    "top5_acc": 0.0914,
+    "map50": 0.0,
+    "map5095": 0.0,
+    "lat_mean_ms": 4.468580009937287,
+    "lat_p95_ms": 4.873265671730041
+  },
+  "finetuned": {
+    "label": "Pruned+FT",
+    "params_M": 0.952048,
+    "size_mb": 3.966739,
+    "macs_M": null,
+    "top1_acc": 0.5084,
+    "top5_acc": 0.8036,
+    "map50": 0.1097335802974442,
+    "map5095": 0.059399364202053426,
+    "lat_mean_ms": 4.753326542377472,
+    "lat_p95_ms": 6.532500648498535
+  }
+}
