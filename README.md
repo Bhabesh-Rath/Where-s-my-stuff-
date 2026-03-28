@@ -58,9 +58,9 @@ Download [APK](https://github.com/Bhabesh-Rath/local-inventory-ai/releases/tag/A
 
 *    **Model selection:** MobileNet V4 Small was chosen over larger classification models because of its favourable accuracy and low latency. Pruning reduced model size further to meet the <50ms inference target on device.
 
-*    **Structured Pruning over Unstructured:** Structured pruning removes entire structures which affects inference speed making it the better choice for a low latency target compared to unstructured which might lead to better sparcity but has less optimized memory access and might cause latency issues.
+*    **Structured Pruning over Unstructured:** Structure pruning removes entire filters or channels, making the hardware natively faster on standard hardware without requirinng sparce inference engines. It affects inference speed making it the better choice for a low latency target compared to unstructured which might lead to better sparcity but has less optimized memory access and might cause latency issues.
 
-*    **COCO Dataset for finetuning:** It is a large dataset with 80 object categories which is a good starting point for a model that has to classify objects present in an image. It was prioritized over other datasets as it had enough categories for proof of concept testing and wouldn't take too much time to train.
+*    **COCO Dataset for finetuning:** It is a large dataset with 80 object categories which is a good starting point for a model that has to classify objects present in an image. It was prioritized as it has enough household objects to verify usability without requiring the curation of a custom dataset in a 3 day constraint.
 
 *    **Why TFLite over ONNX:** TFLite's Android integration with flutter_tflite is better documented and more stable for production APKs. ONNX Runtime Mobile was evaluated but deprioritised due to integration complexity within the 3-day constraint.
 
@@ -70,7 +70,7 @@ Download [APK](https://github.com/Bhabesh-Rath/local-inventory-ai/releases/tag/A
 
 ## Future Improvements
 
-*   **Fix UI:** Fix the overflow of lables on popup and get user verification when a duplicate name for a place is entered.
+*   **UI Refinement:** Label display optimizatiion on scan label popups; duplicate place-name validation.
 *   **Better Classification:** Finetuning with a different Dataset or using a different base model for more accurate labeling.
 *   **Object Marking:** A segmentation model to separate out different objects to aid with classification.
 *   **Custom Labels and continuous finetuning:** Allow users to add their own custom labels for items that the AI model may not recognize and then train the model during downtime to better it's classifications with user data.
