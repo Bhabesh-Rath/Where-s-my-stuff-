@@ -30,6 +30,9 @@ This app was built from model pruning and finetuning to flutter app development 
 
 ## How to Build and Run
 
+Download APK and install on device directly.
+
+**Alternatively:**
 1.  **Clone the repository:**
     ```bash
     git clone <https://github.com/Bhabesh-Rath/Where-s-my-stuff-.git>
@@ -45,12 +48,13 @@ This app was built from model pruning and finetuning to flutter app development 
 
 ## Screenshots
 
-![Screenshot_20260311_202309](https://github.com/user-attachments/assets/bf672ddf-29f6-4dcb-a64c-f147a4f8638e)
-![Screenshot_20260311_202318](https://github.com/user-attachments/assets/6e2e89e7-6fcd-433f-a1fb-4661c7a1e641)
-![Screenshot_20260311_202330](https://github.com/user-attachments/assets/f75f7a80-5d4a-4ebb-9268-2af113fdb53d)
+| Classification popup after clicking a photo | List created and saved | Search function |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/Screenshot_20260328_173250.jpg"> | <img src="assets/screenshots/Screenshot_20260328_173351.jpg"> | <img src="assets/screenshots/Screenshot_20260328_173403.jpg"> |
 
 ## Future Improvements
 
+*   **Fix UI** Fix the overflow of lables on popup and get user verification when a duplicate name for a place is entered.
 *   **Better Classification:** Finetuning with a different Dataset or using a different base model for more accurate labeling.
 *   **Object Marking:** A segmentation model to separate out different objects to aid with classification.
 *   **Custom Labels and continuous finetuning:** Allow users to add their own custom labels for items that the AI model may not recognize and then train the model during downtime to better it's classifications with user data.
