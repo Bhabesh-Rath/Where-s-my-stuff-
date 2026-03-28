@@ -30,7 +30,7 @@ This app was built from model pruning and finetuning to flutter app development 
 
 ## How to Build and Run
 
-Download APK and install on device directly.
+Download [APK](https://github.com/Bhabesh-Rath/local-inventory-ai/releases/tag/APK) and install on device directly.
 
 **Alternatively:**
 1.  **Clone the repository:**
@@ -52,9 +52,25 @@ Download APK and install on device directly.
 |:---:|:---:|:---:|
 | <img src="assets/screenshots/Screenshot_20260328_173250.jpg"> | <img src="assets/screenshots/Screenshot_20260328_173351.jpg"> | <img src="assets/screenshots/Screenshot_20260328_173403.jpg"> |
 
+## Design Decisions & Constraints
+
+*    **Problem framing:** Most household inventory apps require cloud sync or manual text entry. The goal was a camera-first, fully offline app that works on mid-to-low tier Android hardware without internet dependency.
+
+*    **Model selection:** MobileNet V4 Small was chosen over larger classification models because of its favourable accuracy and low latency. Pruning reduced model size further to meet the <50ms inference target on device.
+
+*    **Structured Pruning over Unstructured:** Structured pruning removes entire structures which affects inference speed making it the better choice for a low latency target compared to unstructured which might lead to better sparcity but has less optimized memory access and might cause latency issues.
+
+*    **COCO Dataset for finetuning:** It is a large dataset with 80 object categories which is a good starting point for a model that has to classify objects present in an image. It was prioritized over other datasets as it had enough categories for proof of concept testing and wouldn't take too much time to train.
+
+*    **Why TFLite over ONNX:** TFLite's Android integration with flutter_tflite is better documented and more stable for production APKs. ONNX Runtime Mobile was evaluated but deprioritised due to integration complexity within the 3-day constraint.
+
+*    **Confidence threshold of 25%:** Set deliberately low because the use case (personal item tracking) benefits from over-suggestion — users can dismiss irrelevant labels. A higher threshold would increase silent misses, which is the worse failure mode here.
+
+*    **Local-first storage:** SQLite chosen over cloud sync to keep the app functional without internet and avoid data privacy concerns for personal inventory data.
+
 ## Future Improvements
 
-*   **Fix UI** Fix the overflow of lables on popup and get user verification when a duplicate name for a place is entered.
+*   **Fix UI:** Fix the overflow of lables on popup and get user verification when a duplicate name for a place is entered.
 *   **Better Classification:** Finetuning with a different Dataset or using a different base model for more accurate labeling.
 *   **Object Marking:** A segmentation model to separate out different objects to aid with classification.
 *   **Custom Labels and continuous finetuning:** Allow users to add their own custom labels for items that the AI model may not recognize and then train the model during downtime to better it's classifications with user data.
